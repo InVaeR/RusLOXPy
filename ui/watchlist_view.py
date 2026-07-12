@@ -123,7 +123,7 @@ class WatchListView(QWidget):
 
         self._content_stack = QStackedWidget()
         self._content_stack.setObjectName("wlContentStack")
-        self._content_stack.setStyleSheet("#wlContentStack { background: transparent; }")
+        self._content_stack.setStyleSheet(f"#wlContentStack {{ background: {C.bg}; }}")
 
         self._empty = EmptyState(
             "Список пуст",
@@ -144,8 +144,7 @@ class WatchListView(QWidget):
         self.table.setColumnWidth(3, 120)
         self.table.setAlternatingRowColors(True)
         self.table.setStyleSheet(
-            f"QTableWidget {{ background: transparent; alternate-background-color: {C.surface_hover}; }} "
-            f"QTableWidget::item {{ background: transparent; }}"
+            f"QTableWidget {{ background-color: transparent; alternate-background-color: {C.surface_hover}; }}"
         )
         self.table.setShowGrid(False)
         self.table.verticalHeader().setDefaultSectionSize(32)

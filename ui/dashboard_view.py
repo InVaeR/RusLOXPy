@@ -179,7 +179,7 @@ class DashboardView(QWidget):
 
         self._content_stack = QStackedWidget()
         self._content_stack.setObjectName("dashContentStack")
-        self._content_stack.setStyleSheet("#dashContentStack { background: transparent; }")
+        self._content_stack.setStyleSheet(f"#dashContentStack {{ background: {C.bg}; }}")
         self._empty = EmptyState(
             "Нет данных",
             "Запустите отслеживаемое приложение, чтобы увидеть статистику",
@@ -199,8 +199,7 @@ class DashboardView(QWidget):
         hdr.resizeSection(3, 80)
         self._table.setAlternatingRowColors(True)
         self._table.setStyleSheet(
-            f"QTableWidget {{ background: transparent; alternate-background-color: {C.surface_hover}; }} "
-            f"QTableWidget::item {{ background: transparent; }}"
+            f"QTableWidget {{ background-color: transparent; alternate-background-color: {C.surface_hover}; }}"
         )
         self._table.setShowGrid(False)
         self._table.verticalHeader().setDefaultSectionSize(32)

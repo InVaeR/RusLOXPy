@@ -12,8 +12,6 @@ class BarChartWidget(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground)
-        self.setStyleSheet("background: transparent;")
         self._stats = []
 
     def set_stats(self, stats):
@@ -25,10 +23,12 @@ class BarChartWidget(QWidget):
         return QSize(400, rows * 34 + 16)
 
     def paintEvent(self, event):
-        if not self._stats:
-            return
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        painter.fillRect(event.rect(), QColor(C.bg))
+        if not self._stats:
+            painter.end()
+            return
         w = self.width()
         h = self.height()
         count = len(self._stats)

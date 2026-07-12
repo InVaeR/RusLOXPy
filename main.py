@@ -1,4 +1,5 @@
 import sys
+import os
 import logging
 
 from PySide6.QtWidgets import QApplication, QStyleFactory
@@ -46,7 +47,7 @@ def main():
     server = acquire_single_instance()
     if server is None:
         logger.warning("Приложение уже запущено — выход")
-        return
+        os._exit(0)
     app._single_instance_server = server # type: ignore
 
     db = Database()
